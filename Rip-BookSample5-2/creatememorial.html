@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Memorial | Honor Their Memory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+              background-image: linear-gradient(to bottom, rgb(63, 200, 63) 0%, #e4edf5 100%);
+              
+           
+            padding-bottom: 40px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            color: #7b8a8b;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #7b8a8b;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .memorial-form-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .form-header {
+            background-color: #f8f9fa;
+            padding: 25px 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-header h2 {
+            color: #2c3e50;
+            font-weight: 400;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-header h2 i {
+            margin-right: 12px;
+            color: #7b8a8b;
+        }
+        
+        .form-content {
+            padding: 40px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px 25px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 15px;
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #7b8a8b;
+            box-shadow: 0 0 0 2px rgba(123, 138, 139, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .form-footer {
+            background-color: #f8f9fa;
+            padding: 25px 40px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .form-note {
+            color: #7b8a8b;
+            font-size: 0.9rem;
+            max-width: 400px;
+        }
+        
+        .form-note i {
+            margin-right: 8px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #dde4e6;
+        }
+        
+        .btn-primary {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1a252f;
+        }
+        
+        .photo-upload {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .photo-upload:hover {
+            border-color: #7b8a8b;
+            background-color: #f8f9fa;
+        }
+        
+        .photo-upload i {
+            font-size: 3rem;
+            color: #bdc3c7;
+            margin-bottom: 15px;
+        }
+        
+        .photo-upload p {
+            color: #7b8a8b;
+            margin-bottom: 5px;
+        }
+        
+        .photo-upload small {
+            color: #bdc3c7;
+        }
+        
+        .photo-preview {
+            display: none;
+            max-width: 200px;
+            margin-top: 15px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .memorial-preview {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .memorial-preview h3 {
+            color: #2c3e50;
+            font-weight: 400;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .memorial-preview h3 i {
+            margin-right: 10px;
+            color: #7b8a8b;
+        }
+        
+        .preview-content {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            min-height: 150px;
+            border: 1px dashed #ddd;
+        }
+        
+        .preview-placeholder {
+            color: #bdc3c7;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .preview-placeholder i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7b8a8b;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                min-width: 100%;
+            }
+            
+            .form-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .form-note {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-dove"></i>
+                <h1>Everlasting Memories</h1>
+            </div>
+            <h1 class="page-title">Create a Memorial</h1>
+            <p class="page-subtitle">Honor the memory of your loved one by creating a beautiful, everlasting tribute. Fill in the details below to create a personalized memorial page.</p>
+        </header>
+        
+        <div class="memorial-form-container">
+            <div class="form-header">
+                <h2><i class="fas fa-heart"></i> Memorial Information</h2>
+            </div>
+            
+            <div class="form-content">
+                <form id="memorialForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passingDate">Date of Passing <span class="required">*</span></label>
+                            <input type="date" id="passingDate" name="passingDate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="relationship">Your Relationship <span class="required">*</span></label>
+                            <select id="relationship" name="relationship" required>
+                                <option value="">Select Relationship</option>
+                                <option value="spouse">Spouse/Partner</option>
+                                <option value="parent">Parent</option>
+                                <option value="child">Child</option>
+                                <option value="sibling">Sibling</option>
+                                <option value="friend">Friend</option>
+                                <option value="relative">Relative</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="City, State/Province, Country">
+                        </div>
+                    </div>
+
+                       <div class="form-row">
+                        <div class="form-group">
+                            <label for="Deceased Person firstname"> Deceased Person Firstname<span class="required">*</span></label>
+                            <input type="text" id="Deceased Person firstname" name="Deceased Person firstname" placeholder="First Name" required>
+
+                           </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name<span class="required">*</span></label>
+                            <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+
+                        </div>
+
+
+                       </div>
+
+
+
+                     <div class="form-row">
+                        <div class="form-group">
+
+                            <label for="age" class="required">Age</label>
+                        <input type="number" id="age" min="1" max="120" placeholder="Your age">
+                        <div class="validation-message" id="ageError">Please enter a valid age (1-120)</div>
+
+
+                         </div>
+
+<div class="form-group">
+                        <label for="gender" class="required">Gender</label>
+                        <select id="gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                        <div class="validation-message" id="genderError">Please select your gender</div>
+                    </div>
+
+
+
+
+
+
+                         </div>
+
+
+
+
+                    
+                    <div class="form-group">
+                        <label for="memorialTitle">Memorial Title <span class="required">*</span></label>
+                        <input type="text" id="memorialTitle" name="memorialTitle" placeholder="e.g., In Loving Memory of John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="biography">Biography <span class="required">*</span></label>
+                        <textarea id="biography" name="biography" placeholder="Tell us about their life, passions, accomplishments, and the legacy they leave behind..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Memorial Photo</label>
+                        <div class="photo-upload" id="photoUploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload a photo</p>
+                            <small>JPEG or PNG, max 5MB</small>
+                            <img id="photoPreview" class="photo-preview" src="" alt="Preview">
+                        </div>
+                        <input type="file" id="photoUpload" name="photoUpload" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quote">Favorite Quote or Epitaph</label>
+                        <textarea id="quote" name="quote" placeholder="A meaningful quote, epitaph, or saying that represents them..."></textarea>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="form-footer">
+                <div class="form-note">
+                    <i class="fas fa-info-circle"></i>
+                    Your memorial will be private by default. You can invite others to view and contribute after creation.
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" id="previewBtn">Preview Memorial</button>
+
+                    
+
+                    <button onclick="window.location.href='pricing.html'" class="btn btn-primary">Create Memorial</button>
+                    
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="memorial-preview" id="previewSection">
+            <h3><i class="fas fa-eye"></i> Memorial Preview</h3>
+            <div class="preview-content" id="previewContent">
+                <div class="preview-placeholder">
+                    <i class="fas fa-cloud"></i>
+                    <p>Your memorial preview will appear here</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Everlasting Memories &copy; 2023 | A respectful space to honor loved ones</p>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const memorialForm = document.getElementById('memorialForm');
+        const photoUpload = document.getElementById('photoUpload');
+        const photoUploadArea = document.getElementById('photoUploadArea');
+        const photoPreview = document.getElementById('photoPreview');
+        const previewBtn = document.getElementById('previewBtn');
+        const previewSection = document.getElementById('previewSection');
+        const previewContent = document.getElementById('previewContent');
+        
+        // Initialize with today's date for passing date
+        document.getElementById('passingDate').valueAsDate = new Date();
+        
+        // Set birth date to 60 years ago as a default
+        const defaultBirthDate = new Date();
+        defaultBirthDate.setFullYear(defaultBirthDate.getFullYear() - 60);
+        document.getElementById('birthDate').valueAsDate = defaultBirthDate;
+        
+        // Photo upload functionality
+        photoUploadArea.addEventListener('click', () => {
+            photoUpload.click();
+        });
+        
+        photoUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    photoPreview.src = e.target.result;
+                    photoPreview.style.display = 'block';
+                    photoUploadArea.querySelector('i').style.display = 'none';
+                    photoUploadArea.querySelector('p').style.display = 'none';
+                    photoUploadArea.querySelector('small').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Preview functionality
+        previewBtn.addEventListener('click', () => {
+            // Get form values
+            const firstName = document.getElementById('firstName').value || 'John';
+            const lastName = document.getElementById('lastName').value || 'Doe';
+            const birthDate = document.getElementById('birthDate').value || '1963-06-15';
+            const passingDate = document.getElementById('passingDate').value || '2023-10-22';
+            const relationship = document.getElementById('relationship').value || 'loved one';
+            const location = document.getElementById('location').value || 'Anytown, USA';
+            const memorialTitle = document.getElementById('memorialTitle').value || `In Loving Memory of ${firstName} ${lastName}`;
+            const biography = document.getElementById('biography').value || 'A beloved person who touched many lives...';
+            const quote = document.getElementById('quote').value || 'Gone but never forgotten.';
+            
+            // Format dates
+            const formattedBirthDate = formatDate(birthDate);
+            const formattedPassingDate = formatDate(passingDate);
+            
+            // Calculate age
+            const age = calculateAge(birthDate, passingDate);
+            
+            // Create preview HTML
+            const previewHTML = `
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="color: #2c3e50; text-align: center; margin-bottom: 20px; font-weight: 400;">${memorialTitle}</h2>
+                    
+                    <div style="display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                        ${photoPreview.src ? `<div style="flex: 0 0 200px; margin-right: 30px;">
+                            <img src="${photoPreview.src}" alt="${firstName} ${lastName}" style="width: 100%; border-radius: 8px;">
+                        </div>` : ''}
+                        
+                        <div style="flex: 1; min-width: 300px;">
+                            <h3 style="color: #2c3e50; margin-bottom: 10px;">${firstName} ${lastName}</h3>
+                            <p style="color: #7b8a8b; margin-bottom: 8px;">
+                                <i class="fas fa-calendar" style="margin-right: 8px;"></i>
+                                ${formattedBirthDate} - ${formattedPassingDate}
+                                ${age ? ` (${age} years)` : ''}
+                            </p>
+                            ${location ? `<p style="color: #7b8a8b; margin-bottom: 8px;">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
+                                ${location}
+                            </p>` : ''}
+                            <p style="color: #7b8a8b; margin-bottom: 8px;">
+                                <i class="fas fa-user-heart" style="margin-right: 8px;"></i>
+                                Remembered by ${relationship}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px; font-weight: 500;">Life Story</h3>
+                        <p style="color: #333; line-height: 1.7;">${biography}</p>
+                    </div>
+                    
+                    ${quote ? `<div style="background-color: #f1f2f6; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #7b8a8b;">
+                        <p style="color: #2c3e50; font-style: italic; margin-bottom: 5px;">"${quote}"</p>
+                    </div>` : ''}
+                    
+                    <div style="color: #7b8a8b; font-size: 0.9rem; text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <p>This memorial was created with love and respect.</p>
+                    </div>
+                </div>
+            `;
+            
+            // Update preview section
+            previewContent.innerHTML = previewHTML;
+            previewSection.style.display = 'block';
+            
+            // Scroll to preview
+            previewSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Form submission
+        memorialForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Basic form validation
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const birthDate = document.getElementById('birthDate').value;
+            const passingDate = document.getElementById('passingDate').value;
+            const relationship = document.getElementById('relationship').value;
+            const memorialTitle = document.getElementById('memorialTitle').value;
+            const biography = document.getElementById('biography').value;
+            
+            if (!firstName || !lastName || !birthDate || !passingDate || !relationship || !memorialTitle || !biography) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show loading/confirmation
+            const submitBtn = memorialForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Memorial...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Memorial created successfully. Your tribute is now live.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Reset form
+                memorialForm.reset();
+                photoPreview.style.display = 'none';
+                photoUploadArea.querySelector('i').style.display = 'block';
+                photoUploadArea.querySelector('p').style.display = 'block';
+                photoUploadArea.querySelector('small').style.display = 'block';
+            }, 1500);
+        });
+        
+        // Helper functions
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+        
+        function calculateAge(birthDateString, passingDateString) {
+            if (!birthDateString || !passingDateString) return '';
+            
+            const birthDate = new Date(birthDateString);
+            const passingDate = new Date(passingDateString);
+            
+            let age = passingDate.getFullYear() - birthDate.getFullYear();
+            const monthDiff = passingDate.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && passingDate.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            return age;
+        }
+    </script>
+</body>
+</html>
